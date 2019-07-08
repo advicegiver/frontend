@@ -1,29 +1,32 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 
 function Log(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleCredentials(value, type) {
-    if (type === "username") {
-      setUsername(value);
-    } else {
-      setPassword(value);
-    }
+  function handleCredentialsUsername(e) {
+    setUsername(e.target.value);
+    console.log({ username });
   }
 
-  function checkUser(username, password) {
+  function handleCredentialsPassword(e) {
+    setPassword(e.target.value);
+  }
+
+  function checkUser(event) {
+    event.preventDefault();
+    console.log("out of Log");
     props.handleLoginAction(username);
   }
 
   return (
-    <main>
+    <form>
       <div>
         <label>username:</label>
         <input
           type="text"
           value={username}
-          onChange={() => handleCredentials(this.value, "username")}
+          onChange={handleCredentialsUsername}
         />
       </div>
       <div>
@@ -31,11 +34,11 @@ function Log(props) {
         <input
           type="password"
           value={password}
-          onChange={() => handleCredentials(this.value, "password")}
+          onChange={handleCredentialsPassword}
         />
       </div>
-      <button onClick={() => checkUser(username, password)}>log in</button>
-    </main>
+      <button onClick={checkUser}>log in</button>
+    </form>
   );
 }
 
