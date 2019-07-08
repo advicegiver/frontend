@@ -3,6 +3,7 @@ import React, { useState } from "react";
 function Log(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [usertype, setUsertype] = useState("");
 
   function handleCredentialsUsername(e) {
     setUsername(e.target.value);
@@ -14,11 +15,21 @@ function Log(props) {
     console.log(password);
   }
 
+  function handleCredentialsType(e) {
+    const type = e.target.checked ? "advicer" : "receiver";
+    setUsertype(type);
+    console.log(usertype);
+  }
+
   function checkUser(event) {
     event.preventDefault();
+    // CHECK USER AND PASSWORD
+    //////////////////////////
+    // RECEIVE USERNAME AND USER TYPE
+    //////////////////////////
     if (password.length >= 4) {
       console.log("out of Log");
-      props.handleLoginAction(username);
+      props.handleLoginAction(username, usertype);
     } else {
       console.log("password too short");
     }
@@ -26,6 +37,10 @@ function Log(props) {
 
   return (
     <form>
+      <div>
+        <label>Advicer ? (check for giving advice)</label>
+        <input type="checkbox" onChange={handleCredentialsType} />
+      </div>
       <div>
         <label>username:</label>
         <input

@@ -4,6 +4,12 @@ const Profile = props => {
   return (
     <main>
       <label>{props.username} welcome!</label>
+      <hr />
+      {props.usertype === "advicer" ? (
+        <button>Give advice</button>
+      ) : (
+        <button>Receive advice</button>
+      )}
     </main>
   );
 };
