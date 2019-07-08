@@ -18,7 +18,7 @@ function Log(props) {
     event.preventDefault();
     if (password.length >= 4) {
       console.log("out of Log");
-      props.handleLoginAction(username, true);
+      props.handleLoginAction(username);
     } else {
       console.log("password too short");
     }

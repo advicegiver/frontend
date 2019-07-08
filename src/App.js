@@ -7,20 +7,17 @@ import "./App.css";
 
 function App() {
   const [username, setUsername] = useState("");
-  const [logged, setLogged] = useState(false);
 
-  function handleLoginAction(username,pass) {
+  function handleLoginAction(username, pass) {
     setUsername(username);
-    setLogged(pass);
     console.log("In App");
-    console.log(logged);
     console.log(username);
   }
 
   return (
     <div className="App">
       <h1>Advice giver</h1>
-      {{ logged } === true ? (
+      {username !== "" ? (
         <Profile username={username} />
       ) : (
         <Log handleLoginAction={handleLoginAction} />
