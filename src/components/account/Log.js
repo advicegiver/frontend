@@ -6,17 +6,22 @@ function Log(props) {
 
   function handleCredentialsUsername(e) {
     setUsername(e.target.value);
-    console.log({ username });
+    console.log(username);
   }
 
   function handleCredentialsPassword(e) {
     setPassword(e.target.value);
+    console.log(password);
   }
 
   function checkUser(event) {
     event.preventDefault();
-    console.log("out of Log");
-    props.handleLoginAction(username);
+    if (password.length >= 4) {
+      console.log("out of Log");
+      props.handleLoginAction(username, true);
+    } else {
+      console.log("password too short");
+    }
   }
 
   return (
